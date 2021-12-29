@@ -43,6 +43,10 @@ public interface FbServiceInterface {
 
 
 
+	List<FbTimeline> seePostService(FbTimeline fbt);
+
+
+
 
 
 }

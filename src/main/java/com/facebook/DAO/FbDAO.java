@@ -114,7 +114,7 @@ public class FbDAO implements FbDAOInterface {
 		int result=0;
 		try{
 			con=Database.getConnection();
-			ps=con.prepareStatement(Queries.fb_deleteProfile);
+			CallableStatement ps=con.prepareCall(Queries.fb_deleteProfile);
 			ps.setString(1, fbUser.getEmail());
 			result=ps.executeUpdate();
 			con.commit();
@@ -153,8 +153,7 @@ public class FbDAO implements FbDAOInterface {
 			resultSet=ps.executeQuery();
 			if(resultSet.next()) {
 				fbUserOb.setfName(resultSet.getString(1));
-				fbUserOb.setlName(resultSet.getString(2));
-				
+				fbUserOb.setlName(resultSet.getString(2));	
 			}else {
 				fbUserOb=null;
 			}
@@ -202,6 +201,34 @@ public class FbDAO implements FbDAOInterface {
 					FbTimeline fbtr=new FbTimeline();
 					fbtr.setMessage(resultSet.getString(1));
 					fbtr.setTime(resultSet.getString(2));
+					fbtList.add(fbtr);
+				}while (resultSet.next());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ps=null;
+		resultSet=null;
+		return fbtList;
+	}
+
+	@Override
+	public List<FbTimeline> seePostDAO(FbTimeline fbt) {
+		List<FbTimeline> fbtList=new ArrayList<FbTimeline>();
+		try {
+			con=Database.getConnection();
+			PreparedStatement ps = con.prepareStatement(Queries.fb_getPostTimeline);
+			ps.setString(1, fbt.getEmail());
+			resultSet = ps.executeQuery();
+			
+			if(resultSet.next()==false) {
+				fbtList=null;
+			}
+			else {
+				do{
+					FbTimeline fbtr=new FbTimeline();
+					fbtr.setMessage(resultSet.getString(1));
+					fbtr.setEmail(resultSet.getString(2));
 					fbtList.add(fbtr);
 				}while (resultSet.next());
 			}

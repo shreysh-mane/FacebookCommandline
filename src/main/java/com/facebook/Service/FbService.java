@@ -68,6 +68,12 @@ public class FbService implements FbServiceInterface {
 		return fbDAO.TimelineDAO(fbt);
 	}
 
+	@Override
+	public List<FbTimeline> seePostService(FbTimeline fbt) {
+		FbDAOInterface fbDAO=DAOFactory.createObj();
+		return fbDAO.seePostDAO(fbt);
+	}
+
 	
 
 }

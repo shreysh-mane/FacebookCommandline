@@ -25,6 +25,8 @@ public interface FbDAOInterface {
 
 	List<FbTimeline> TimelineDAO(FbTimeline fbt);
 
+	List<FbTimeline> seePostDAO(FbTimeline fbt);
+
 	
 
 }

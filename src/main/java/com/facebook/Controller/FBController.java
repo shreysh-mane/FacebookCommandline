@@ -140,7 +140,7 @@ public class FBController implements FbControllerInterface {
 		FbTimeline fbt=new FbTimeline();
 		Scanner scn=new Scanner(System.in);
 		System.out.println(MessageConstant.UserGetPost);
-		fbt.setMessage(scn.next());
+		fbt.setMessage(scn.nextLine());
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
@@ -167,6 +167,27 @@ public class FBController implements FbControllerInterface {
 			 i++;
 		 }
 		 
+		return i;
+		
+	}
+
+	@Override
+	public int seePostController() {
+		int i=0; 
+		FbServiceInterface fbS=ServiceFactory.createObj();
+		 FbTimeline fbt=new FbTimeline();
+		 fbt.setEmail(UserEmail);
+		 List <FbTimeline> timelinearray=fbS.seePostService(fbt);
+		 Optional <List <FbTimeline>> check=Optional.ofNullable(timelinearray);
+		 if(check.isPresent()) {
+			 for(FbTimeline timeline:timelinearray) {
+				 System.out.print(MessageConstant.Post);
+				 System.out.println(timeline.getMessage());
+				 System.out.print(MessageConstant.Postedby);
+				 System.out.println(timeline.getEmail());
+				 i++;
+			 }
+		 } 
 		return i;
 		
 	}

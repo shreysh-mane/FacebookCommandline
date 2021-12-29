@@ -20,6 +20,8 @@ public interface FbControllerInterface {
 
 	int TimelineController();
 
+	int seePostController();
+
 
 
 }

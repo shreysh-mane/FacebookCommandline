@@ -1,14 +1,14 @@
 package com.facebook.View;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.facebook.Constants.MessageConstant;
 import com.facebook.Controller.FbControllerInterface;
 import com.facebook.Utility.ControllerFactory;
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 public class FbView {
-	
+	static Logger log=Logger.getLogger("FBView");
 	
 	public static void main(String[] args) {
 		
@@ -32,19 +32,19 @@ public class FbView {
 		case 2:int loginCheck=fbC.logInController();
 				if(loginCheck==1) {
 					message=MessageConstant.logInSuccessfull;
-					System.out.println(message);
+					log.info(message);
 					FbView.loggedIn();
 				}else if(loginCheck==2) {
 					message=MessageConstant.incorrectPassword;
-					System.out.println(message);
+					log.warning(message);
 				}else {
 					message=MessageConstant.incorrectEmail;
-					System.out.println(message);
+					log.warning(message);
 				}
 				
 			break;
 		default:
-			System.out.println(MessageConstant.choseCorrect);
+			log.warning(MessageConstant.choseCorrect);
 		}
 		System.out.println(MessageConstant.exitChoice);
 		loopControl=scn.next().equalsIgnoreCase("y")?"y":"n";
@@ -67,7 +67,7 @@ public class FbView {
 		
 		switch(choice) {
 		case "1":int totalProfiles=fbC.viewAllProfileController();
-				System.out.println(MessageConstant.profilesShown+totalProfiles);
+				 System.out.println(MessageConstant.profilesShown+totalProfiles);
 		break;
 		case "2":int ProfileStat=fbC.searchProfileController();
 				message=ProfileStat>0?MessageConstant.profileFound:MessageConstant.profileNotFound;
@@ -77,6 +77,7 @@ public class FbView {
 		case "3":int DeleteStat=fbC.deleteProfileController();
 				message=DeleteStat>0?MessageConstant.ProfileDeleted:MessageConstant.ProfileNotDeleted;
 				System.out.println(message);
+				loopControl="n";
 				break;
 		case "4":int EditStat=fbC.UpdateProfileController();
 				message=EditStat>0?MessageConstant.ProfileUpdated:MessageConstant.ProfileUpdateError;
@@ -90,8 +91,13 @@ public class FbView {
 		 	     message=SendStat>0?MessageConstant.MessagePosted:MessageConstant.error;
 		 	     System.out.println(message);
 		 	     break;
-		case "7":int TimelineStat=fbC.TimelineController();
-		 		 message=TimelineStat>0?MessageConstant.TimelineShow:MessageConstant.error;
+		 	     
+		case "7":int viewPostStat=fbC.seePostController();
+	     		message=viewPostStat>0?MessageConstant.PostEnded:MessageConstant.Nopost;
+	     		System.out.println(message);
+	     		break;     
+		case "8":int TimelineStat=fbC.TimelineController();
+		 		 message=TimelineStat>0?MessageConstant.TimelineShow:MessageConstant.Nopost;
 		 		 System.out.println(message);
 		 		 break;
 		default :
