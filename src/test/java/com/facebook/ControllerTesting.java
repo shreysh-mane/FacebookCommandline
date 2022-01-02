@@ -24,50 +24,50 @@ public class ControllerTesting extends TestCase {
 		fc=null;
 }
 
-//	public void testCreateProfileController() {
-//		int i=fc.createProfileController();
-//		assert i>0:"Profile creation filed";
-//	}
-//
+	public void testCreateProfileController() {
+		int i=fc.createProfileController();
+		assert i>0:"Profile creation filed";
+	}
+
 	public void testLogInController() {
 		int i=fc.logInController();
 		assert i>0:"Login filed";
 	}
-//
-//	public void testViewAllProfileController() {
-//		int i=fc.viewAllProfileController();
-//		assert i>0:"ViewAllProfile filed";
-//	}
-//
-//	public void testSearchProfileController() {
-//		int i=fc.searchProfileController();
-//		assert i>0:"SearchProfile filed";
-//	}
-//
-//	public void testDeleteProfileController() {
-//		int i=fc.deleteProfileController();
-//		assert i>0:"Profile deletion filed";
-//	}
-//
-//	public void testUpdateProfileController() {
-//		int i=fc.UpdateProfileController();
-//		assert i>0:"UpdateProfile filed";
-//	}
-//
-//	public void testDetailProfileController() {
-//		int i=fc.detailProfileController();
-//		assert i>0:"DetailProfile filed";
-//	}
-//
-//	public void testCreatePostController() {
-//		int i=fc.createPostController();
-//		assert i>0:"CreatePost filed";
-//	}
-//
-//	public void testTimelineController() {
-//		int i=fc.TimelineController();
-//		assert i>0:"Timeline filed";
-//	}
+
+	public void testViewAllProfileController() {
+		int i=fc.viewAllProfileController();
+		assert i>0:"ViewAllProfile filed";
+	}
+
+	public void testSearchProfileController() {
+		int i=fc.searchProfileController();
+		assert i>0:"SearchProfile filed";
+	}
+
+	public void testDeleteProfileController() {
+		int i=fc.deleteProfileController();
+		assert i>0:"Profile deletion filed";
+	}
+
+	public void testUpdateProfileController() {
+		int i=fc.UpdateProfileController();
+		assert i>0:"UpdateProfile filed";
+	}
+
+	public void testDetailProfileController() {
+		int i=fc.detailProfileController();
+		assert i>0:"DetailProfile filed";
+	}
+
+	public void testCreatePostController() {
+		int i=fc.createPostController();
+		assert i>0:"CreatePost filed";
+	}
+
+	public void testTimelineController() {
+		int i=fc.TimelineController();
+		assert i>0:"Timeline filed";
+	}
 	@Test
 	public void testseePostController() {
 		int i=fc.seePostController();

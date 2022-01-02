@@ -116,6 +116,7 @@ public class FbDAO implements FbDAOInterface {
 			con=Database.getConnection();
 			CallableStatement ps=con.prepareCall(Queries.fb_deleteProfile);
 			ps.setString(1, fbUser.getEmail());
+			ps.setString(2, fbUser.getPassword());
 			result=ps.executeUpdate();
 			con.commit();
 		}catch(Exception e) {
