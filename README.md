@@ -24,9 +24,9 @@ To-do list:
 
 ## Getting Started
    
-*Install JDK and Oracle database in your system.
-*Install java ide in your system like eclipese or intelliJ
-*Add the database driver into your IDE library.
+* Install JDK and Oracle database in your system.
+* Install java ide in your system like eclipese or intelliJ
+* Add the database driver into your IDE library.
 
 ## Usage
 
